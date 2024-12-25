@@ -11,10 +11,17 @@ pub fn verse(n: u32) -> String {
 }
 
 pub fn sing(start: u32, end: u32) -> String {
-    let mut result: String = "".to_string();
-    for i in (end..=start).rev() {
-        result += "\n\n";
-        result += &verse(i).to_string();
-    }
-    result
+
+    /*
+    * first approach
+    // let mut result: String = "".to_string();
+    // for i in (end..=start).rev() {
+    //     result += "\n\n";
+    //     result += &verse(i).to_string();
+    // }
+    // result
+     */
+
+    // functional approach
+    (end..=start).map(|n| verse(n)).rev().collect::<Vec<String>>().join("\n\n")
 }
